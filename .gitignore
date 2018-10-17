@@ -1,0 +1,14 @@
+/.classpath
+/.project
+/.settings
+/dist
+/node_modules
+/node
+.idea
+*.iml
+*.ipr
+target
+.settings
+.project
+.classpath
+repository.xml.generated
