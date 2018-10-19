@@ -4,7 +4,7 @@
 /dist
 /node_modules
 /node
-.idea
+/.idea
 *.iml
 *.ipr
 target
