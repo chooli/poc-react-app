@@ -82,6 +82,29 @@ FOOTER {
     text-align: center;
 }
 
+DIV#logo-bar {
+    margin: 4px 2px;
+    font-size: 23px;
+    float: left;
+}
+
+DIV#header-tools {
+    margin: 0px 32px;
+    font-size: 23px;
+    float: left;
+}
+DIV#header-tools button {
+    border: 0px solid #898989;
+    background: #2c89c7;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 50px;
+    width: 27px;
+    height: 27px;
+    padding: 1px 1px;
+    cursor: pointer;
+}
+
 DIV#main {
     height: 100%;
 }

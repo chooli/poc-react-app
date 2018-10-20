@@ -1,23 +1,24 @@
 import React, {Component} from "react";
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGhost } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faGhost);
+import { faBong,faFileUpload } from '@fortawesome/free-solid-svg-icons';
 
 class HeaderToolBar extends Component {
 
     constructor(props){
         super(props);
+
+        this.onFileBTN = this.onFileBTN.bind(this);
     }
 
     render() {
-        return (
-            <div>
-                <FontAwesomeIcon icon="ghost" />
-                <span id="app-info">React Sanbox</span>
-            </div>
-        );
+        return <div >
+            <div id="logo-bar"><FontAwesomeIcon icon={faBong}/>&nbsp;<span>React Sanbox</span></div>
+            <div id="header-tools"><button onClick={this.onFileBTN}><FontAwesomeIcon icon={faFileUpload}/></button></div>
+        </div>;
+    }
+
+    onFileBTN() {
+        //show file manager
     }
 
 }
