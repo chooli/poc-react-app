@@ -105,8 +105,9 @@ DIV#header-tools button {
     cursor: pointer;
 }
 
-DIV#main {
+MAIN {
     height: 100%;
+    margin: 10px 10px;
 }
 
 #app-info {
