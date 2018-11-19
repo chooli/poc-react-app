@@ -6,9 +6,11 @@ const htmlPlugin = new HtmlWebPackPlugin({
 });
 
 module.exports = {
+
     resolve: {
         extensions: ['.js', '.jsx']
     },
+
     module: {
       rules: [
         {
@@ -24,5 +26,8 @@ module.exports = {
         }
       ]
     },
-    plugins: [htmlPlugin]
+
+    plugins: [htmlPlugin],
+
+    mode: 'development'
 };
