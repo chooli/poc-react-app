@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Foundation React App</title>
+
+    <link rel="stylesheet" href="./resources/css/index.css" type="text/css"/>
 </head>
 
-<>
+<script>
+    "use strict";
+
+    function my_function() {
+        const appContext = {};
+        appReactRender('app-container', appContext);
+    }
+    if (window.attachEvent) {window.attachEvent('onload', my_function);}
+    else if (window.addEventListener) {window.addEventListener('load', my_function, false);}
+    else {document.addEventListener('load', my_function, false);}
+</script>
 
 <body>
     <div id="app-container">loading ... </div>

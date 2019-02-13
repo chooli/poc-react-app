@@ -1,9 +1,9 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import store from './App.redux-store';
+import store from './fundation/redux/App.redux-store';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
-import MainLayout from './layout/MainLayout'
+import MainLayout from './fundation/layout/MainLayout'
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/es/styles";
 
 import ApplicationContext from './ApplicationContext'

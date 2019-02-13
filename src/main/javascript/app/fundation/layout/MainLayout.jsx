@@ -3,7 +3,6 @@ import {compose} from "react-apollo";
 import {withStyles, Grid, Paper, Typography, Button} from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import ToolsSteps from "../tools/ToolsSteps"
 
 let styles = theme => ({
     topBar: {
@@ -73,8 +72,8 @@ let styles = theme => ({
     }
 });
 
-const backToTools = () => {
-    window.location = "/tools";
+const login = () => {
+    window.location = "/login";
 }
 
 const MainLayout = ({classes, topBarProps, children}) => (
@@ -83,9 +82,9 @@ const MainLayout = ({classes, topBarProps, children}) => (
         <AppBar position="static">
             <Toolbar className={classes.topBar}>
                 <Typography className={classes.topBarText}>
-                    SDL Generator Tools
+                    Foundation React App
                 </Typography>
-                <Button className={classes.topBarButton} onClick={backToTools}>Back to tools</Button>
+                <Button className={classes.topBarButton} onClick={login}>Login</Button>
             </Toolbar>
         </AppBar>
 
@@ -94,11 +93,11 @@ const MainLayout = ({classes, topBarProps, children}) => (
             <Paper className={classes.mainPanel}>
                 <Grid item>
                     <Typography className={classes.mainText}>
-                        Build your GraphQL
+                        Right Area
                     </Typography>
                 </Grid>
                 <Grid item>
-                    <ToolsSteps children={children}/>
+                    {/*<ToolsSteps children={children}/>*/}
                 </Grid>
             </Paper>
         </Grid>
@@ -107,7 +106,7 @@ const MainLayout = ({classes, topBarProps, children}) => (
         <Grid item xs={12} sm={5}>
             <Paper className={classes.viewerPanel}>
                 <Typography className={classes.viewerText}>
-                    GraphQL Schema
+                    Left Area
                 </Typography>
             </Paper>
         </Grid>
