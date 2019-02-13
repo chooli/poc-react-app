@@ -1,0 +1,35 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import '../../resources/css/index.css';
+import HeaderToolBar from "./headerTools/headerToolbar.jsx";
+import SimpleContentManger from './simpleContentManager/SimpleContentManager';
+import WrapperTest from "./testComponents/wrapperTest";
+import ComposeTest from "./testComponents/ComposeTest";
+import ApplicationContext from "./ApplicationContext.jsx";
+
+const themes = {
+    light: {
+        foreground: '#000000',
+        background: '#eeeeee',
+    },
+    dark: {
+        foreground: '#ffffff',
+        background: '#222222',
+    },
+};
+
+
+const Index = () => {
+
+    return <React.Fragment>
+        <ApplicationContext.Provider value={themes}>
+            {/*<WrapperTest>*/}
+                {/*<ComposeTest/>*/}
+            {/*</WrapperTest>*/}
+            <SimpleContentManger/>
+        </ApplicationContext.Provider>
+    </React.Fragment>;
+};
+
+ReactDOM.render(<HeaderToolBar />, document.getElementById("header"));
+ReactDOM.render(<Index />, document.getElementById("root"));
