@@ -25,7 +25,7 @@ let styles = theme => ({
         right: "1.67%",
         fontStyle: "normal",
         fontWeight: 600,
-        lineHeight: "18px",
+        lineHeight: "20px",
         fontSize: "14px",
         textAlign: "right",
         color: "#fff"
@@ -66,7 +66,7 @@ let styles = theme => ({
         top: "24px",
         fontStyle: "normal",
         fontWeight: 600,
-        lineHeight: "18px",
+        lineHeight: "20px",
         fontSize: "14px",
         color: "#fff"
     }
