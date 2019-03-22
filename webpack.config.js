@@ -1,75 +1,87 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
-    filename: "./index.html"
+    template: './src/index.html',
+    filename: './index.html'
 });
 
-module.exports = {
+module.exports = (env, argv) => {
 
-    entry: './src/main/javascript/app/index.js',
+    const config = {
+        entry: {
+            foundationReactApp: [path.resolve(__dirname, 'src/main/javascript/app', 'index.js')]
+        },
 
-    // output: {
-    //     path: __dirname + '/src/main/resources/javascript/apps/',
-    //     filename: "[name].js"
-    // },
+        output: {
+            path: __dirname + '/src/main/resources/javascript/apps/',
+            filename: "[name].js"
+        },
 
-    resolve: {
-        mainFields: ['module', 'main'],
-        extensions: ['.mjs', '.js', '.jsx', 'json']
-    },
+        resolve: {
+            mainFields: ['module', 'main'],
+            extensions: ['.mjs', '.js', '.jsx', 'json']
+        },
 
-    module: {
-      rules: [
-          {
-              test: /\.mjs$/,
-              include: /node_modules/,
-              type: "javascript/auto",
-          },
-          {
-              test: /\.jsx?$/,
-              // include: [path.join(__dirname, "src")],
-              loader: 'babel-loader',
-              query: {
-                  presets: [
-                      ['@babel/preset-env', {modules: false, targets: {safari: '7', ie: '10'}}],
-                      '@babel/preset-react'
-                  ],
-                  plugins: [
-                      "lodash"
-                  ]
-              }
-          },
-          {
-              test: /\.css$/,
-              use: ['style-loader', 'css-loader']
-          },
-          {
-              test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-              use: [{
-                  loader: 'file-loader',
-                  options: {
-                      name: '[name].[ext]',
-                      outputPath: 'fonts/'
-                  }
-              }]
-          }
-      ]
-    },
+        module: {
+            rules: [
+                {
+                    test: /\.mjs$/,
+                    include: /node_modules/,
+                    type: "javascript/auto",
+                },
+                {
+                    test: /\.jsx?$/,
+                    // include: [path.join(__dirname, "src")],
+                    loader: 'babel-loader',
+                    query: {
+                        presets: [
+                            ['@babel/preset-env', {modules: false, targets: {safari: '7', ie: '10'}}],
+                            '@babel/preset-react'
+                        ],
+                        plugins: [
+                            "lodash"
+                        ]
+                    }
+                },
+                {
+                    test: /\.css$/,
+                    use: ['style-loader', 'css-loader']
+                },
+                {
+                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }]
+                }
+            ]
+        },
 
-    plugins: [htmlPlugin],
+        plugins: [htmlPlugin],
 
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendors',
+                        chunks: 'all'
+                    }
                 }
             }
-        }
-    },
+        },
 
-    mode: 'development'
+        mode: 'development'
+    };
+
+    // config.devtool = (argv.mode === 'production') ? 'source-map' : 'inline-source-map';
+    config.devtool = 'inline-source-map';
+
+    return config;
+
 };
+

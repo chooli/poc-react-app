@@ -13,7 +13,9 @@
     "use strict";
 
     function my_function() {
-        const appContext = {};
+        const appContext = {
+            contextPath: '/'
+        };
         appReactRender('app-container', appContext);
     }
     if (window.attachEvent) {window.attachEvent('onload', my_function);}

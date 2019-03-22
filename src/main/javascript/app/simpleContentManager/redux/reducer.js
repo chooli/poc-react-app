@@ -1,21 +1,14 @@
-const initialState = {
-    content: {
-        id: null,
-        title: null,
-        description: null,
-        content: null
-    }
-}
+import {CMActionTypes} from './actions';
+
+const initialState = {};
 
 export const contentReducer = ((state = initialState, action) => {
-    
-    switch (action.type) {
+  switch (action.type) {
+    case CMActionTypes.NEW_CONTENT:
+      return state.concat([action.content]);
 
-        case 'ADD_CONTENT': return {
-            content: action.content
-        }
+    default: return state;
+  }
+});
 
-        default: return state
-    }
-
-})
+export default contentReducer;

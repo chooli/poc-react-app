@@ -1,34 +1,77 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import styles from '../../../../resources/css/contentmanager.css';
-import {Grid, Paper, Button} from '@material-ui/core';
-import {contentReducer} from "./redux/reducer"
+import React, {useState} from 'react';
+import {
+  Grid,
+  Paper,
+  withStyles,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  Fab,
+} from '@material-ui/core';
+import {Add, Navigation, Edit} from '@material-ui/icons';
 
-class SimpleContentManager extends React.Component{
+const style = (theme) => ({
+  main: {
+    margin: '0px 0px',
+  },
+  sideBar: {
+    margin: '0px 0px',
+    padding: '13px 9px',
+    width: '86px',
+  },
+  item: {
+    height: '30px',
+  },
+});
 
-    constructor(props){
-        super(props);
-    }
+const members = ['Lynn', 'Chooli', 'James'];
 
-    render(){
-        console.log("chooli test here ", styles);
+const MenuItem = ({classes, member}) => {
+  return (
+    <ListItem selected={true} classes={classes.item}>
+      <ListItemText
+        primary={member}
+      />
+      <ListItemSecondaryAction>
+        <IconButton aria-label="Delete">
+          <Edit/>
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
+};
 
-        return <Grid container spacing={0}>
-            <Grid item sm={3} className={styles.sideBar}>navigation side bar</Grid>
-            <Grid item sm={9} className={styles.mainArea}><Paper square>Main area</Paper></Grid>
-        </Grid>
-    }
+const SimpleContentManager = ({classes}) => {
+  const [dense, updateDense] = useState(false);
 
-}
+  return (
+    <Grid container spacing={0}>
+      <Grid item sm={3} className={classes.sideBar}>
+        <Fab variant="extended"
+          size="small"
+          color="primary"
+          aria-label="Add">
+          <Add/>
+                  Add new member
+        </Fab>
+      </Grid>
+      <Grid item sm={9} className={classes.main}>
+        <Paper square>
+          <List dense={dense}>
+            {
+              members.map( (member) =>
+                <MenuItem
+                  member={member}
+                  classes={classes}
+                />)
+            }
+          </List>
+        </Paper>
+      </Grid>
+    </Grid>
+  );
+};
 
-const mapStatesToProps = (state) => {
-    return {
-        content: state.content
-    }
-}
-
-const mapDispatcherToProps = {
-    updateContent: contentReducer
-}
-
-export default SimpleContentManager;
+export default withStyles(style)(SimpleContentManager);
