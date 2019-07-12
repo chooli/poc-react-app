@@ -6,7 +6,7 @@ const htmlPlugin = new HtmlWebPackPlugin({
     filename: './index.html'
 });
 
-module.exports = (env, argv) => {
+module.exports = (env, m) => {
 
     const config = {
         entry: {
